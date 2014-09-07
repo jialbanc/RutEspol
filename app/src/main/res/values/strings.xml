@@ -7,6 +7,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_maps_paradero">MapsParadero</string>
+    <string name="title_activity_maps_activity">mapa</string>
     <string name="title_activity_escoger_ruta">EscogerRuta</string>
 
 </resources>

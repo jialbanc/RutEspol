@@ -17,6 +17,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class MapsParadero extends FragmentActivity {
@@ -45,7 +46,39 @@ public class MapsParadero extends FragmentActivity {
         mMap.animateCamera(CameraUpdateFactory.zoomTo(13), 2000, null);
 
         paraderos= new Paraderos();
+        dibujarParaderos();
 
+        mapaAction=new ConexionMapa(mMap);
+        final ArrayList<LatLng> markerPoints = new ArrayList<LatLng>();
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                float distancia;
+                float[] results = new float[1];
+                /*Toast.makeText(getApplicationContext(),
+                        "Marker Clicked: " + marker.getTitle()+" " + getCurrentLocation().latitude +" "+ getCurrentLocation().longitude, Toast.LENGTH_LONG)
+                        .show();*/
+                markerPoints.clear();
+                mMap.clear();
+                dibujarParaderos();
+                markerPoints.add(getCurrentLocation());
+                markerPoints.add(marker.getPosition());
+                mapaAction.dibujarRuta("walking", markerPoints);
+                Location.distanceBetween(getCurrentLocation().latitude, getCurrentLocation().longitude,
+                        marker.getPosition().latitude, marker.getPosition().longitude, results);
+                DecimalFormat df = new DecimalFormat("0.00");
+
+                Toast.makeText(getApplicationContext(),
+                        "Distancia: " + df.format(CalculationByDistance(getCurrentLocation(),marker.getPosition()))+" Km", Toast.LENGTH_LONG)
+                        .show();
+
+                return false;
+            }
+        });
+
+    }
+    public void dibujarParaderos(){
         for (int i = 0; i < paraderos.paraderos.size(); i++) {
             mMap.addMarker(new MarkerOptions()
                     .position(paraderos.paraderos.get(i))
@@ -55,19 +88,29 @@ public class MapsParadero extends FragmentActivity {
                             .fromResource(R.drawable.ic_launcher))
                     .anchor(0.5f, 0.5f));
         }
-        mapaAction=new ConexionMapa(mMap);
-        final ArrayList<LatLng> markerPoints = new ArrayList<LatLng>();
+    }
 
-        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-                Toast.makeText(getApplicationContext(),
-                        "Marker Clicked: " + marker.getTitle()+" " + getCurrentLocation().latitude +" "+ getCurrentLocation().longitude, Toast.LENGTH_LONG)
-                        .show();
-                return false;
-            }
-        });
+    public double CalculationByDistance(LatLng StartP, LatLng EndP) {
+        int Radius=6371;//radius of earth in Km
+        double lat1 = StartP.latitude;
+        double lat2 = EndP.latitude;
+        double lon1 = StartP.longitude;
+        double lon2 = EndP.longitude;
+        double dLat = Math.toRadians(lat2-lat1);
+        double dLon = Math.toRadians(lon2-lon1);
+        double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+                        Math.sin(dLon/2) * Math.sin(dLon/2);
+        double c = 2 * Math.asin(Math.sqrt(a));
+        double valueResult= Radius*c;
+        double km=valueResult/1;
+        DecimalFormat newFormat = new DecimalFormat("###");
+        int kmInDec =  Integer.valueOf(newFormat.format(km));
+        double meter=valueResult%1000;
+        int  meterInDec= Integer.valueOf(newFormat.format(meter));
+        Log.i("Radius Value",""+valueResult%3+"   KM  "+kmInDec+" Meter   "+meterInDec);
 
+        return Radius * c* 1.609;
     }
 
 

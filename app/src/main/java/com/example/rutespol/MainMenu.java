@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View.*;
 import android.view.View;
 import android.content.Intent;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 public class MainMenu extends Activity implements OnClickListener{
@@ -27,6 +28,8 @@ public class MainMenu extends Activity implements OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainmenu_layout);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         mPanes = (SlidingPaneLayout) findViewById(R.id.slidingPane);
         mPanes.setParallaxDistance(PARALLAX_SIZE);
