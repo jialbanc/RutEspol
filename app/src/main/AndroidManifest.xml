@@ -6,11 +6,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-        <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" >
-        </activity>
+        android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -20,8 +16,9 @@
             android:value="AIzaSyAdNnF2JBvaeTPzrzvN-AzdqG4gwIMDmhc" />
 
         <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main" >
+            android:name=".MainMenu"
+            android:label="@string/title_activity_main"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,11 +27,8 @@
         </activity>
         <activity
             android:name=".MapsParadero"
-            android:label="@string/title_activity_maps_paradero" >
-        </activity>
-        <activity
-            android:name=".EscogerRuta"
-            android:label="@string/title_activity_escoger_ruta" >
+            android:label="@string/title_activity_maps_paradero"
+            android:screenOrientation="landscape">
         </activity>
     </application>
 
