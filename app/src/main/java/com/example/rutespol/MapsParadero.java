@@ -6,6 +6,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.widget.SlidingPaneLayout;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.nio.channels.Pipe;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -27,10 +29,19 @@ public class MapsParadero extends FragmentActivity {
     private Paraderos paraderos;
     private ConexionMapa mapaAction;
 
+    private static final int PARALLAX_SIZE = 30;
+
+    private SlidingPaneLayout mPanes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps_paradero);
+
+        mPanes = (SlidingPaneLayout) findViewById(R.id.slidingPane);
+        mPanes.setParallaxDistance(PARALLAX_SIZE);
+        mPanes.setShadowResource(R.drawable.background);
+
         //setUpMapIfNeeded();
         if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
@@ -54,6 +65,7 @@ public class MapsParadero extends FragmentActivity {
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
+                openPane();
                 float distancia;
                 float[] results = new float[1];
                 /*Toast.makeText(getApplicationContext(),
@@ -77,6 +89,13 @@ public class MapsParadero extends FragmentActivity {
             }
         });
 
+    }
+    private void openPane() {
+        mPanes.openPane();
+    }
+
+    private void closePane() {
+        mPanes.closePane();
     }
     public void dibujarParaderos(){
         for (int i = 0; i < paraderos.paraderos.size(); i++) {

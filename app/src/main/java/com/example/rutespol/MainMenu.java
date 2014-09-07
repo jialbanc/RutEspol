@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View.*;
 import android.view.View;
 import android.content.Intent;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -21,23 +20,16 @@ public class MainMenu extends Activity implements OnClickListener{
 
     private Dialog chooseNorthADialog;
 
-    private static final int PARALLAX_SIZE = 30;
 
-    private SlidingPaneLayout mPanes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.mainmenu_layout);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-        setContentView(R.layout.mainmenu_layout);
-
-        mPanes = (SlidingPaneLayout) findViewById(R.id.slidingPane);
-        mPanes.setParallaxDistance(PARALLAX_SIZE);
-        mPanes.setShadowResource(R.drawable.background);
 
         createStartMenuDialog();
         createChooseRouteDialog();
@@ -60,6 +52,8 @@ public class MainMenu extends Activity implements OnClickListener{
         super.onWindowFocusChanged(hasFocus);
 
         startMenuDialog.show();
+
+
     }
 
     @Override
@@ -75,13 +69,7 @@ public class MainMenu extends Activity implements OnClickListener{
         return super.onOptionsItemSelected(item);
     }
 
-    private void openPane() {
-        mPanes.openPane();
-    }
 
-    private void closePane() {
-        mPanes.closePane();
-    }
 
     @Override
     public void onClick(View arg0) {
@@ -98,11 +86,7 @@ public class MainMenu extends Activity implements OnClickListener{
         startMenuDialog.findViewById(R.id.rutasIngreso).setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (mPanes.isOpen()) {
-                    closePane();
-                } else {
-                    openPane();
-                }
+
 
                 chooseRouteDialog.show();
                 startMenuDialog.dismiss();

@@ -3,6 +3,7 @@ package com.example.rutespol;
 import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.widget.SlidingPaneLayout;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,11 +21,20 @@ public class MapsActivity extends FragmentActivity {
     Lectura leer;
     LatLng latlng;
     PolylineOptions line = new PolylineOptions();
+    private static final int PARALLAX_SIZE = 30;
+
+    private SlidingPaneLayout mPanes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+
+
+
+
+
         mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
                 .getMap();
         leer=new Lectura();
@@ -60,6 +70,16 @@ public class MapsActivity extends FragmentActivity {
 
 
 
+    }
+
+
+
+    private void openPane() {
+        mPanes.openPane();
+    }
+
+    private void closePane() {
+        mPanes.closePane();
     }
 
     @Override
