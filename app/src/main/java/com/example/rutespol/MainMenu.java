@@ -3,6 +3,7 @@ package com.example.rutespol;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.support.v4.widget.SlidingPaneLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View.*;
@@ -18,10 +19,18 @@ public class MainMenu extends Activity implements OnClickListener{
 
     private Dialog chooseNorthADialog;
 
+    private static final int PARALLAX_SIZE = 30;
+
+    private SlidingPaneLayout mPanes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainmenu_layout);
+
+        mPanes = (SlidingPaneLayout) findViewById(R.id.slidingPane);
+        mPanes.setParallaxDistance(PARALLAX_SIZE);
+        mPanes.setShadowResource(R.drawable.background);
 
         createStartMenuDialog();
         createChooseRouteDialog();
@@ -36,6 +45,8 @@ public class MainMenu extends Activity implements OnClickListener{
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+
+
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -53,7 +64,16 @@ public class MainMenu extends Activity implements OnClickListener{
         if (id == R.id.action_settings) {
             return true;
         }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    private void openPane() {
+        mPanes.openPane();
+    }
+
+    private void closePane() {
+        mPanes.closePane();
     }
 
     @Override
@@ -71,6 +91,12 @@ public class MainMenu extends Activity implements OnClickListener{
         startMenuDialog.findViewById(R.id.rutasIngreso).setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View v) {
+                if (mPanes.isOpen()) {
+                    closePane();
+                } else {
+                    openPane();
+                }
+
                 chooseRouteDialog.show();
                 startMenuDialog.dismiss();
             }

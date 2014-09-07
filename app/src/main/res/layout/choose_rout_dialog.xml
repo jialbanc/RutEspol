@@ -17,7 +17,6 @@
             android:text="Norte A"
             android:id="@+id/ruta_norte_a"
             android:textSize="25sp"
-
             />
 
         <Button
