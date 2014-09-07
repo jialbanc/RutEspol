@@ -22,7 +22,7 @@ import java.nio.channels.Pipe;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class MapsParadero extends FragmentActivity {
+public class MapsParadero extends FragmentActivity implements GoogleMap.OnMapClickListener {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private LatLng ubicacion;
@@ -55,6 +55,8 @@ public class MapsParadero extends FragmentActivity {
         mMap.animateCamera(CameraUpdateFactory.zoomIn());
         // Zoom out to zoom level 10, animating with a duration of 2 seconds.
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
+
+        mMap.setOnMapClickListener(this);
 
         paraderos= new Paraderos();
         dibujarParaderos();
@@ -100,7 +102,7 @@ public class MapsParadero extends FragmentActivity {
     public void dibujarParaderos(){
         for (int i = 0; i < paraderos.paraderos.size(); i++) {
             DecimalFormat df = new DecimalFormat("0.00");
-            if(CalculationByDistance(getCurrentLocation(),paraderos.paraderos.get(i))<5){
+            if(CalculationByDistance(getCurrentLocation(), paraderos.paraderos.get(i))<5){
             mMap.addMarker(new MarkerOptions()
                     .position(paraderos.paraderos.get(i))
                     .title(paraderos.paraderoNombre.get(i))
@@ -132,6 +134,10 @@ public class MapsParadero extends FragmentActivity {
         Log.i("Radius Value",""+valueResult%3+"   KM  "+kmInDec+" Meter   "+meterInDec);
 
         return Radius * c* 1.609;
+    }
+    public void onMapClick (LatLng point) {
+        // Do Something
+        closePane();
     }
 
 
