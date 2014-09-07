@@ -43,7 +43,7 @@ public class MapsParadero extends FragmentActivity {
         // Zoom in, animating the camera.
         mMap.animateCamera(CameraUpdateFactory.zoomIn());
         // Zoom out to zoom level 10, animating with a duration of 2 seconds.
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(13), 2000, null);
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
 
         paraderos= new Paraderos();
         dibujarParaderos();
@@ -80,13 +80,15 @@ public class MapsParadero extends FragmentActivity {
     }
     public void dibujarParaderos(){
         for (int i = 0; i < paraderos.paraderos.size(); i++) {
+            DecimalFormat df = new DecimalFormat("0.00");
+            if(CalculationByDistance(getCurrentLocation(),paraderos.paraderos.get(i))<5){
             mMap.addMarker(new MarkerOptions()
                     .position(paraderos.paraderos.get(i))
                     .title(paraderos.paraderoNombre.get(i))
                     .snippet(paraderos.paraderoMensaje.get(i))
                     .icon(BitmapDescriptorFactory
                             .fromResource(R.drawable.ic_launcher))
-                    .anchor(0.5f, 0.5f));
+                    .anchor(0.01f, 0.01f));}
         }
     }
 
