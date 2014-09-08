@@ -1,9 +1,11 @@
 package com.example.rutespol;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.widget.SlidingPaneLayout;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -30,9 +32,13 @@ public class MapsActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-
-
-
+        this.findViewById(R.id.header_maps).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MapsActivity.this,MainMenu.class);
+                startActivity(i);
+            }
+        });
 
 
         mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
