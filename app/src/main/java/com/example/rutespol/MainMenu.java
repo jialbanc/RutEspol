@@ -29,7 +29,14 @@ public class MainMenu extends Activity implements OnClickListener{
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-
+        this.findViewById(R.id.header).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseNorthADialog.dismiss();
+                chooseRouteDialog.dismiss();
+                startMenuDialog.show();
+            }
+        });
 
         createStartMenuDialog();
         createChooseRouteDialog();

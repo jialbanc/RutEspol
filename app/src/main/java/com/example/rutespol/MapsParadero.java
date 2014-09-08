@@ -1,6 +1,7 @@
 package com.example.rutespol;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -8,6 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -41,6 +43,14 @@ public class MapsParadero extends FragmentActivity implements GoogleMap.OnMapCli
         mPanes = (SlidingPaneLayout) findViewById(R.id.slidingPane);
         mPanes.setParallaxDistance(PARALLAX_SIZE);
         mPanes.setShadowResource(R.drawable.background);
+
+        this.findViewById(R.id.header_paradero).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MapsParadero.this,MainMenu.class);
+                startActivity(i);
+            }
+        });
 
         //setUpMapIfNeeded();
         if (mMap == null) {
