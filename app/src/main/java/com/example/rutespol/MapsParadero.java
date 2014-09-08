@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.widget.SlidingPaneLayout;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
@@ -40,9 +41,21 @@ public class MapsParadero extends FragmentActivity implements GoogleMap.OnMapCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps_paradero);
 
-        mPanes = (SlidingPaneLayout) findViewById(R.id.slidingPane);
+        mPanes = (SlidingPaneLayout) findViewById(R.id.slidingPanel_paradero);
         mPanes.setParallaxDistance(PARALLAX_SIZE);
         mPanes.setShadowResource(R.drawable.background);
+
+        this.findViewById(R.id.fragmentContainer_paradero).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (mPanes.isOpen()) {
+                    closePane();
+                } else {
+                    openPane();
+                }
+                return false;
+            }
+        });
 
         this.findViewById(R.id.header_paradero).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,7 +131,7 @@ public class MapsParadero extends FragmentActivity implements GoogleMap.OnMapCli
                     .title(paraderos.paraderoNombre.get(i))
                     .snippet(paraderos.paraderoMensaje.get(i))
                     .icon(BitmapDescriptorFactory
-                            .fromResource(R.drawable.ic_launcher))
+                            .fromResource(R.drawable.icono_bus))
                     .anchor(0.01f, 0.01f));}
         }
     }

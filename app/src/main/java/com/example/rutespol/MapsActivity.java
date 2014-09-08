@@ -40,6 +40,9 @@ public class MapsActivity extends FragmentActivity {
             }
         });
 
+        mPanes = (SlidingPaneLayout) findViewById(R.id.slidingPanel_maps);
+        mPanes.setParallaxDistance(PARALLAX_SIZE);
+        mPanes.setShadowResource(R.drawable.background);
 
         mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
                 .getMap();
