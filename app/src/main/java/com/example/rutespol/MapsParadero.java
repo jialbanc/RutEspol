@@ -131,7 +131,7 @@ public class MapsParadero extends FragmentActivity implements GoogleMap.OnMapCli
                     .title(paraderos.paraderoNombre.get(i))
                     .snippet(paraderos.paraderoMensaje.get(i))
                     .icon(BitmapDescriptorFactory
-                            .fromResource(R.drawable.icono_bus))
+                            .fromResource(R.drawable.icono_paradero))
                     .anchor(0.01f, 0.01f));}
         }
     }

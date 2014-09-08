@@ -27,8 +27,6 @@ public class MainMenu extends Activity implements OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainmenu_layout);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         this.findViewById(R.id.header).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

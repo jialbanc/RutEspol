@@ -68,13 +68,24 @@ public class MapsActivity extends FragmentActivity {
         // Zoom out to zoom level 10, animating with a duration of 2 seconds.
         mMap.animateCamera(CameraUpdateFactory.zoomTo(13), 2000, null);
         for (int i = 0; i < leer.paraderos.size(); i++) {
-            mMap.addMarker(new MarkerOptions()
-                    .position(leer.paraderos.get(i))
-                    .title(leer.paraderoNombre.get(i))
-                    .snippet(leer.paraderoMensaje.get(i))
-                    .icon(BitmapDescriptorFactory
-                            .fromResource(R.drawable.ic_launcher))
-                    .anchor(0.5f, 0.5f));
+            if(i==0){
+                mMap.addMarker(new MarkerOptions()
+                        .position(leer.paraderos.get(i))
+                        .title(leer.paraderoNombre.get(i))
+                        .snippet(leer.paraderoMensaje.get(i))
+                        .icon(BitmapDescriptorFactory
+                                .fromResource(R.drawable.icono_bus))
+                        .anchor(0.5f, 0.5f));
+            }else {
+                mMap.addMarker(new MarkerOptions()
+                        .position(leer.paraderos.get(i))
+                        .title(leer.paraderoNombre.get(i))
+                        .snippet(leer.paraderoMensaje.get(i))
+                        .icon(BitmapDescriptorFactory
+                                .fromResource(R.drawable.icono_paradero))
+                        .anchor(0.5f, 0.5f));
+            }
+
         }
 
 
