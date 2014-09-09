@@ -9,5 +9,7 @@
     <string name="title_activity_maps_paradero">MapsParadero</string>
     <string name="title_activity_maps_activity">mapa</string>
     <string name="title_activity_escoger_ruta">EscogerRuta</string>
+    <string name="ruta">Ruta :</string>
+    <string name="horario">Horarios :</string>
 
 </resources>

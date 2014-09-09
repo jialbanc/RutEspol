@@ -27,25 +27,103 @@
     <android.support.v4.widget.SlidingPaneLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/slidingPanel_maps"
-        android:layout_width="300dp"
+        android:layout_width="170dp"
         android:layout_height="340dp"
         android:layout_marginTop="48dp">
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TableRow
+                android:paddingTop="8dp"
+                android:layout_gravity="center_horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/ruta"
+                    android:id="@+id/lbl_ruta" />
+            </TableRow>
+            <TableRow
+                android:paddingTop="8dp"
+                android:layout_gravity="center_horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:id="@+id/txt_ruta" />
+            </TableRow>
+            <TableRow
+                android:paddingTop="8dp"
+                android:layout_gravity="center_horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/horario"
+                    android:id="@+id/lbl_horario" />
+            </TableRow>
+            <TableRow
+                android:paddingTop="8dp"
+                android:layout_gravity="center_horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text=""
+                    android:id="@+id/txt_horario" />
+            </TableRow>
+            <TableRow
+                android:paddingTop="8dp"
+                android:layout_gravity="center_horizontal"
+                >
 
-        <Button
-            android:layout_column="0"
-            android:layout_margin="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Centro"
-            android:id="@+id/rut"
-            android:textSize="25sp"
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icono_paradero"
+                    android:id="@+id/img_paradero" />
 
-            />
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Paradero"
+                    android:id="@+id/txt_paradero" />
+            </TableRow>
+            <TableRow
+                android:paddingTop="8dp"
+                android:layout_gravity="center_horizontal"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icono_persona"
+                    android:id="@+id/img_ubicacion" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Ubicación Actual"
+                    android:id="@+id/txt_ubicacion" />
+            </TableRow>
+        </TableLayout>
         <FrameLayout
-            android:layout_width="match_parent"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:id="@+id/fragmentContainer_maps"/>
 
     </android.support.v4.widget.SlidingPaneLayout>
+
+
 </RelativeLayout>

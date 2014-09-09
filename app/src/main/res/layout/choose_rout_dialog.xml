@@ -5,42 +5,42 @@
     android:layout_height="match_parent">
 
     <TableRow
-        android:paddingTop="10dp"
+        android:paddingTop="8dp"
         android:layout_gravity="center_horizontal"
         >
 
         <Button
             android:layout_column="0"
-            android:layout_margin="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Norte A"
+            android:layout_margin="4dp"
+            android:layout_width="280dp"
+            android:layout_height="100dp"
+            android:background="@drawable/ticket_NorteA"
             android:id="@+id/ruta_norte_a"
             android:textSize="25sp"
             />
 
         <Button
             android:layout_column="1"
-            android:layout_margin="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Norte B"
+            android:layout_margin="4dp"
+            android:layout_width="280dp"
+            android:layout_height="100dp"
+            android:background="@drawable/ticket_norteB"
             android:id="@+id/ruta_norte_b"
             android:textSize="25sp"
             />
     </TableRow>
 
     <TableRow
-        android:paddingTop="10dp"
+        android:paddingTop="8dp"
         android:layout_gravity="center_horizontal"
         >
 
         <Button
             android:layout_column="0"
-            android:layout_margin="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sur Este"
+            android:layout_margin="4dp"
+            android:layout_width="280dp"
+            android:layout_height="100dp"
+            android:background="@drawable/ticket_surEste"
             android:id="@+id/ruta_sur_este"
             android:textSize="25sp"
 
@@ -48,26 +48,26 @@
 
         <Button
             android:layout_column="1"
-            android:layout_margin="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sur Oeste"
+            android:layout_margin="4dp"
+            android:layout_width="280dp"
+            android:layout_height="100dp"
+            android:background="@drawable/ticket_surOeste"
             android:id="@+id/ruta_sur_oeste"
             android:textSize="25sp"
             />
     </TableRow>
 
     <TableRow
-        android:paddingTop="10dp"
+        android:paddingTop="8dp"
         android:layout_gravity="center_horizontal"
         >
 
         <Button
             android:layout_column="0"
-            android:layout_margin="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Centro"
+            android:layout_margin="4dp"
+            android:layout_width="280dp"
+            android:layout_height="100dp"
+            android:background="@drawable/ticket_centro"
             android:id="@+id/ruta_centro"
             android:textSize="25sp"
 
@@ -75,10 +75,10 @@
 
         <Button
             android:layout_column="1"
-            android:layout_margin="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Duran"
+            android:layout_margin="4dp"
+            android:layout_width="280dp"
+            android:layout_height="100dp"
+            android:background="@drawable/ticket_duran"
             android:id="@+id/ruta_duran"
             android:textSize="25sp"
             />
