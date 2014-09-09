@@ -14,7 +14,7 @@
             android:layout_margin="4dp"
             android:layout_width="280dp"
             android:layout_height="100dp"
-            android:background="@drawable/ticket_NorteA"
+            android:background="@drawable/ticket_nortea"
             android:id="@+id/ruta_norte_a"
             android:textSize="25sp"
             />
@@ -24,7 +24,7 @@
             android:layout_margin="4dp"
             android:layout_width="280dp"
             android:layout_height="100dp"
-            android:background="@drawable/ticket_norteB"
+            android:background="@drawable/ticket_norteb"
             android:id="@+id/ruta_norte_b"
             android:textSize="25sp"
             />
@@ -40,7 +40,7 @@
             android:layout_margin="4dp"
             android:layout_width="280dp"
             android:layout_height="100dp"
-            android:background="@drawable/ticket_surEste"
+            android:background="@drawable/ticket_sureste"
             android:id="@+id/ruta_sur_este"
             android:textSize="25sp"
 
@@ -51,7 +51,7 @@
             android:layout_margin="4dp"
             android:layout_width="280dp"
             android:layout_height="100dp"
-            android:background="@drawable/ticket_surOeste"
+            android:background="@drawable/ticket_suroeste"
             android:id="@+id/ruta_sur_oeste"
             android:textSize="25sp"
             />
